@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Mini Goblin Savaş Simülasyonu</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="goblin, oyun, simülasyon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background: black url("https://cdnb.artstation.com/p/assets/images/images/006/712/717/large/ben-redekop-ben-redekop-sow-as-you-reap-print.jpg?1500673780");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 80% 100%;
+      }
+
+      p {
+        color: Chocolate;
+        text-shadow: 2px 2px 8px NavajoWhite;
+        font-size: 110%;
+      }
+	  
+
+      #ilk {
+        font-size: 150%;
+        text-align: center;
+        border: 4px dashed LightSeaGreen;
+        background-color: MintCream;
+        padding: 10px;
+        margin: -4px;
+      }
+
+      .top {
+        color: MidnightBlue;
+        position: center;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 300%;
+      }
+
+      div.x {
+        width: 1200px;
+        border: 15px dashed LightSeaGreen;
+        border-radius: 50px;
+        background-color: PaleTurquoise;
+        padding: 0px;
+        margin: auto;
+      }
+
+      div.a {
+        text-align: center;
+        background-color: MintCream;
+        width: 300px;
+        border: 15px dashed LightSeaGreen;
+        border-radius: 50px;
+        padding: 50px;
+        margin: auto;
+        position: relative;
+        right: 350px;
+      }
+
+      div.b {
+        text-align: center;
+        background-color: MintCream;
+        width: 300px;
+        border: 15px dashed LightSeaGreen;
+        border-radius: 50px;
+        padding: 50px;
+        margin: auto;
+        position: relative;
+        left: 350px;
+        bottom: 450px;
+      }
+
+      div.c {
+        background-color: MintCream;
+        width: 600px;
+        border: 15px dashed LightSeaGreen;
+        border-radius: 50px;
+        padding: 50px;
+        position: relative;
+        margin: auto;
+        bottom: 200px;
+      }
+
+      div.d {
+        background-color: MintCream;
+        width: 800px;
+        border-left: 15px solid LightSeaGreen;
+        border-radius: 50px;
+        padding: 100px;
+        margin: auto;
+      }
+
+
+      .hr {
+        border: 16px solid black;
+      }
+
+      hr {
+        border: 2px solid black;
+      }
+
+      #attack {
+		transition-duration: 0.3s;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid Crimson;
+		font-size: 16px;
+		padding: 5px;
+		border-radius: 16px;
+		background-color: White;
+      }
+	  #attack:hover {
+		background-color: Crimson;
+		color: white;
+		}
+		
+      #defense {
+		transition-duration: 0.3s;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid Blue;
+		font-size: 16px;
+		padding: 5px;
+		border-radius: 16px;
+		background-color: White;
+      }
+	  #defense:hover {
+		background-color: Blue;
+		color: white;
+		}
+
+      #run {
+		transition-duration: 0.3s;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid ForestGreen;
+		font-size: 16px;
+		padding: 5px;
+		border-radius: 16px;
+		background-color: White;
+      }
+	  #run:hover {
+		background-color: ForestGreen;
+		color: white;
+	  }
+		
+      table {
+        border: 15px solid LightSeaGreen;
+        position: relative;
+        left: 550px;
+      }
+
+      th, tr, td {
+        border: 4px solid LightSeaGreen;
+      }
+
+      table#t01 tr:nth-child(even) {
+        position: center;
+        text-align: center;
+        background-color: #eee;
+      }
+
+      table#t01 tr:nth-child(odd) {
+        text-align: center;
+        background-color: #fff;
+      }
+
+      table#t01 th {
+        background-color: black;
+        color: white;
+      }
+
+    </style>
+  </head>
+
+
+  <body>
+    <hr class="hr">
+
+    <div class="x">
+      <h1 class="top">Hilari Hortus Kasabasına Hoş Geldin!</h1>
+      <hr>
+      <br><br>
+      <p id="ilk"><b>Bu kasabayı goblin tehditinden kurtarmak ister misin acemi savaşçı?</b></p>
+      <br>
+    </div>
+	
+    <hr class="hr">
+    <br><br><br><br><br><br><br><br>
+
+
+    <div class="a">
+      <h2 class="top">Hikaye</h2>
+      <hr>
+      <p><em>Burası çiçek bahçeleriyle ünlü küçük bir kasabadır. Kasaba halkıysa barışçıl ve bahçıvan insanlardı. Tüccarlar Via Iaspis yolundan geçerken her zaman bu kasabaya uğrarlardı. Huzur dolu bir kasaba... Ta ki kasaba etrafında birkaç goblin görüldüğü söylentileri çıkana kadar. Söylentilerin yayılmasıyla daha seyrek uğranılan yer haline gelmiş. Birkaç kasabalı insanın koybalması üzerine kasaba halkı krallıktan yardım istedi ama buna rağmen bu küçük kasabaya hiç yardım gönderilmedi.</em></p>
+    </div>
+	
+    <br><br>
+	
+    <div class="b">
+      <h3 class="top">AMA SEN!</h3>
+      <hr>
+      <p><em>Doğup büyüdüğün Hilari Hortus kasabasına yardım gönderilmediğini duyunca bir kılıçla beraber geri döndün <b>acemi savaşçı</b>. Kısmi kılıç bilginle olsa dahi kendini feda etmek uğruna goblinleri alt etmeye yemin ettin.</em></p>
+    </div>
+
+    <div class="c">
+      <h2 class="top">Nasıl Oynanır?</h2>
+      <hr>
+      <p>Yapman gereken şey çok basit. Goblinin hareketlerine dikkat et ve <mark>saldırı</mark> ya da <mark>savunma</mark> vb. buttonlarından hangisine tıklayacağına karar ver. Yaptığın seçimlere göre farklı sonuçlar ortaya çıkaracaktır. Her oyun bitiminde oyunu sıfırlayıp tekrar deneyebilirsin.<br><br>İyi şanslar <b>acemi savaşçı!</b></p>
+    </div>
+
+    <hr class="hr">
+    <br><br><br><br>
+
+    <div class="x">
+      <h1 class="top">Oyun Alanı</h1>
+      <hr>
+      <div class="d">	  
+		<p id="status">Can statüleri</p>	
+        <button id="attack" onclick="attack()" type="button">Saldırı</button>
+        <button id="defense" onclick="defense()" type="button"> Savunma</button>
+        <button id="run" onclick="run()" type="button"></button>
+        <p id="game">1.TUR: Dikkat et! Önünde bir goblin belirdi. Goblinin elinde sopa var. Goblin sana doğru hızla atıldı. Ne yapacaksın?</p>
+      </div>
+    </div>
+	
+    <br><br><br><br>
+    <hr class="hr">
+	<br><br><br><br>
+	 
+    <table id="t01">
+      <tr>
+        <th>Tur Sayısı</th>
+        <th>Goblin 1</th>
+        <th>Goblin 2</th>
+        <th>Açıklama</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>saldırı</td>
+        <td>-</td>
+        <td>Savunma yapmazsan -1 hasar alırsın</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Goblin hiçbir şey yapmayacak</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>savunma</td>
+        <td>-</td>
+        <td>Eylemin etkisiz</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>güçlü darbe</td>
+        <td>-</td>
+        <td>Savunma yapmazsan -3, yaparsan -1 hasar alacaksın</td>
+      </tr>
+      <tr>
+        <td rowspan="3">5</td>
+        <td>saldırı</td>
+        <td>moral</td>
+        <td>Goblini bu tur kesemezsen 3 seçenekli kadere kalacaksın</td>
+      </tr>
+      <tr>
+        <td>zafer</td>
+        <td>-</td>
+        <td>Öldüğün için kaybettin/İkinci goblin gözükmez</td>
+      </tr>
+      <tr>
+        <td>ölür</td>
+        <td>gelir</td>
+        <td>2. goblinle savaşma fırsatı açılır</td>
+      </tr>
+      <tr>
+        <td rowspan="2">6</td>
+        <td>canlı-moral</td>
+        <td>moral</td>
+        <td>Son kaderin için 3 yol belirecek</td>
+      </tr>
+      <tr>
+        <td>ölü</td>
+        <td>saldırı</td>
+        <td>Canına göre ölebilme riskin var</td>
+      </tr>
+      <tr>
+        <td rowspan="2">7</td>
+        <td>ölü</td>
+        <td>sıkıldı</td>
+        <td>2. goblini bu tur kesemezsen sıkılıp gidecek</td>
+      </tr>
+      <tr>
+        <td>ölü</td>
+        <td>ölür</td>
+        <td>Az deneyimli savaşçı olarak kazanırsın</td>
+      </tr>
+    </table>
+	<br><br><br><hr class="hr">
+
+    <!--><iframe width="0" height="0" src="https://www.youtube.com/embed/aFpeSPCqBGo?autoplay=1&loop=1&playlist=aFpeSPCqBGo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; loop; gyroscope; picture-in-picture"></iframe>
+    <script>-->
+
+      //oyuncunun canini tutacak "can" isimli bir degisken olusturuldu ve ona 5 degeri atandi
+      var can = 5;
+
+      //birinci goblinin canini tutacak "gcan" isimli bir degisken olusturuldu ve ona 3 degeri atandi
+      var gcan = 3;
+
+      //ikinci goblinin canini tutacak "gcan2" isimli bir degisken olusturuldu ve ona 2 degeri atandi
+      var gcan2 = 2;
+
+      //tur sayisini tutan degisken olusturuldu, baslangic icin tur sayisi 0
+      var tur = 0;
+		document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+
+      //saldiri buttonuna tiklandiginda calısacak olan fonksiyon, ID'si game olan texti tur sayisi ve sonuca gore can degerlerini degistirecek
+      function attack() {
+        tur += 1;
+        if (tur == 1) {
+			//ID'si game olan paragrafın icindeki texti degistirir
+			document.getElementById("game").innerHTML = "İkiniz de birbirinize saldırdınız. İki taraf da -1 hasar aldı.<br><br>2.TUR: Goblinin kafası karıştı ve durup sana bakmaya başladı.<br>Ne yapacaksın?";
+			//can degerlerini tutan degiskenler secimlere gore eksiltilir ya da azaltilir
+			can -= 1;
+			gcan -= 1;
+			//ID'si status olan paragrafın icindeki texti can degerlerini saklayan degiskenlerin degerine gore degistirir
+			document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+			//diger ifadelere gecmemesi icin buttona tikladiginda aktif olan fonksiyonu bitirir
+			return;
+        }
+        if (tur == 2) {
+			document.getElementById("game").innerHTML = "Goblin bir şey yapmadı ama sen saldırdın. Goblin -1 hasar aldı.<br><br>3.TUR: Gobline kötü bakış attın. Goblin sopasını kendi önüne çekti ve o da sana pis pis baktı.<br>Ne yapacaksın?";
+			gcan -= 1;
+			document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+			return;
+        }
+        if (tur == 3) {
+			document.getElementById("game").innerHTML = "Goblin savunma yaptığı için ona hasar veremedin. İki taraf da hasar almadı.<br><br>4.TUR Geçen turdan dolayı goblin sana çok kızdı. Goblin tüm gücünü sopasına veriyor!!<br>Ne yapacaksın?";
+			document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+			return;
+        }
+        if (tur == 4) {
+			document.getElementById("game").innerHTML = "Goblin sen saldırmadan önce sana <b>güçlü darbesini</b> indirdi. Gobline hasar veremedin ama sen -3 hasar aldın.<br><br>5.TUR Goblin hala kendisine güveniyor.Goblin sopasını tekrar hazırlıyor.<br>Ne yapacaksın?";
+			can -= 3;
+			document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+			return;
+        }
+        if (tur == 5) {
+			can -= 1;
+			gcan -= 1;
+			//oyuncunun canı 0 a inerse calisir
+			if (can == 0) {
+				document.getElementById("game").innerHTML = "Goblin geçen tur sana vurduğu için geç davrandın ve goblin senden önce vurdu. Goblinden -1 hasar aldın.<br>Öldüğün için gobline başarılı bir saldırı yapamadın. Goblinin köye girmesini de engelleyemedin.<br>Şehit oldun acemi savaşçı.<br><hr><br>OYUN BİTTİ!";
+				gcan += 1;
+				tur = 30;
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+				return;
+			}
+			//ilk goblin cani 0 ama oyuncunun cani 0 dan farkli ise calisir
+			if ((gcan == 0) && (can != 0)) {
+				document.getElementById("game").innerHTML = "Goblin geçen tur sana vurduğu için geç davrandın ve goblin senden önce vurdu. Goblinden -1 hasar aldın<br>Vay canına! Goblini yendin!<br>Belki de köy bir süreliğine huzura kavuşacak. Sen de cesur savaşçı olarak anılacaks-<br>>>>O DA NE!? Başka bir goblin!! Hemen silahına sarıl, bir kez daha başlıyoruz.<br><br>6.TUR: İlk goblinini yenmenin sevincini yaşayamadan saldıran ikinci goblin.. İkinci goblin saldırıyor<br>Ne yapacaksın?";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 +"</p>";
+				return;
+			}
+			//hem oyuncu hem de ilk goblin hayattaysa calisir
+			if ((can != 0) && (gcan != 0)) {
+				document.getElementById("game").innerHTML = "Goblin geçen tur sana vurduğu için geç davrandın ve goblin senden önce vurdu. Goblinden -1 hasar aldın<br>Yorulmaya başladın.<br>>>NE!? Başka bir goblin daha!! Şimdi de ikisine birden karşı koyman gerek!<br><br>6.TUR: İki goblini görünce adrenalinin tavan yaptı. İkincinin gelişiyle de goblinlerin moralleri arttı.<br>Ne yapacaksın?";
+				document.getElementById("attack").innerHTML = "SALDIR!";
+				document.getElementById("defense").innerHTML = "SAVUN!!!";
+				document.getElementById("run").innerHTML = "KAÇ!!!!";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+				return;
+			}
+        }
+        if (tur == 6) {
+			//hem oyuncu hem de ilk goblin hayattaysa calisir
+			if ((gcan != 0) && (can != 0)) {
+				document.getElementById("game").innerHTML = "Goblinlere saldırdığın sırada tarif edilemez bir güç seni ve kılıcını kapladı. Bu şimdiye kadar hiç olmamıştı! Saldırın sonucunda iki goblin de küle döndü! Gücünü gören goblin diğer goblinlere senden bahsetti. Goblinler Hilari Hortus kasabasına bir daha kolay kolay saldırmayacaktı. Artık acemi savaşçı degil, <b>efsanevi savaşçı</b> olarak anılmaya başladın!!<br><hr><br>Oyun bitti...";
+				gcan = -999;
+				gcan2 = -999;
+				//oyunun bittigini belirtmek icin tur sayisina oyun disi bir deger atar, 30
+				tur = 30;
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+				document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+				return;
+			}
+			//ilk goblin cani 0 ama oyuncunun cani 0 dan farkli ise calisir
+			if ((gcan == 0) && (can != 0)) {
+				can -= 1;
+				//bu tur oyuncu cani 0'a inerse calisir
+				if (can == 0) {
+					document.getElementById("game").innerHTML = "Öldüğün için gobline başarılı bir saldırı yapamadın. İkinci goblinin kasabaya girmesini de engelleyemedin.<br>Şehit oldun <b>acemi savaşçi</b><br><hr><br>OYUN BİTTİ!";
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					return;
+				}
+				if (can != 0) {
+					gcan2 -= 1;
+					document.getElementById("game").innerHTML = "-1 hasar aldın ama ikinci gobline vurabildin. İkinci goblin de -1 hasar aldı.<br>7.TUR: Goblin biraz geri çekildi ve arkasına baktı.<br>Ne yapacaksın?";
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					return;
+				}
+            }
+        }
+        if (tur == 7) {
+			//ilk goblin cani 0 ama oyuncunun cani 0 dan farkli ise calisir
+            if ((gcan == 0) && (can != 0)) {
+				gcan2 -= 1;
+				//ikinci goblin hayattaysa calisir
+				if (gcan2 != 0) {
+					document.getElementById("game").innerHTML = "İkinci gobline -1 hasar verdin. İkinci goblin seninle uğraşmaktan sıkıldı ve gitti. Kasaba geçici olarak goblin tehditinden kurtuldu. Bir sonraki gelişleri için kendini eğitmeye başladın.<br><hr><br>Oyun Bitti...";
+					tur = 30;
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+					return;
+				}
+				//ikinci goblin yenilirse calisir
+				if (gcan2 == 0) {
+					document.getElementById("game").innerHTML = "İkinci goblini de yendin! Sayende kasaba bir süreliğine huzur bulabilir. Kasaba adına teşekkürler az deneyimli savaşçı!<br><hr><br>Oyun Bitti...";
+					tur = 30;
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+					return;
+				}
+            }
+          }
+        }
+
+        //savunma buttonuna tiklandiginda calisacak olan fonksiyon, ID'si game olan text i duruma ve tur sayisina gore degistirecek
+        function defense() {
+			tur += 1;
+			if (tur == 1) {
+				document.getElementById("game").innerHTML = "Goblin saldırdı ama sen savundun. İki taraf da hasar almadı.<br><br>2.TUR: Goblinin kafası karıştı ve durup sana bakmaya başladı.<br>Ne yapacaksın?";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				return;
+			}
+			if (tur == 2) {
+				document.getElementById("game").innerHTML = "Goblin bir şey yapmadı sen de boş yere savunmada kaldın. İki taraf da hasar almadı.<br><br>3.TUR: Gobline kötü bakış attın. Goblin sopasını kendi önüne çekti ve o da sana pis pis baktı.<br>Ne yapacaksın?";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				return;
+			}
+			if (tur == 3) {
+				document.getElementById("game").innerHTML = "İkiniz de savunmada kaldınız. İki taraf da hasar almadı.<br><br>4.TUR Geçen turdan dolayı goblin sana çok kızdı. Goblin tüm gücünü sopasına veriyor!!<br>nNe yapacaksın?";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				return;
+			}
+			if (tur == 4) {
+				document.getElementById("game").innerHTML = "Goblinin çok güçlü saldırısına karşı direnmeye çalıştın! Savunmada kalsan da goblin sana -1 hasar vurdu.<br><br>5.TUR: Goblin hala kendisine güveniyor. Goblin sopasını tekrar hazırlıyor.<br>Ne yapacaksın?";
+				can -= 1;
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				return;
+			}
+			if (tur == 5) {
+				document.getElementById("game").innerHTML = "Goblinin saldırısına karşı direndin. İki taraf da hasar almadı.<br>>>OLAMAZ!!!\nBir goblin daha geldi!!<br><br>6.TUR: İki goblini görünce adrenalinin tavan yaptı. İkincinin gelişiyle de goblinlerin moralleri arttı.<br>Ne yapacaksın?";
+				document.getElementById("attack").innerHTML = "SALDIR!";
+				document.getElementById("defense").innerHTML = "SAVUN!!!";
+				document.getElementById("run").innerHTML = "KAÇ!!!!";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+				return;
+			}
+			if (tur == 6) {
+				//hem oyuncu hem de ilk goblin hayattaysa calisir
+				if ((gcan != 0) && (can != 0)) {
+					document.getElementById("game").innerHTML = "Tüm gücünle savundun ve saldırıları engelledin. Yine de kaybedeceğini düşündün ve korkuya kapıldın. O anda arkadan deneyimli bir savaşçı geldi ve seni kurtardı. Yardıma gelen kişi krallıkta ünlü olan savaşçılardan Varinius'tu! Cesaretini takdir etti. Civardaki tüm goblinleri beraber temizlediniz. Tebrikler! Artık sen de <b>deneyimli bir savaşçısın</b>.<br><hr><br>Oyun bitti...";
+					gcan=0;
+					gcan2=0;
+					tur = 30;
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+					return;
+				}
+				//ilk goblin cani 0 ama oyuncunun cani 0 dan farkli ise calisir
+				if ((gcan == 0) && (can != 0)) {
+					document.getElementById("game").innerHTML = "İkinci goblinden gelen saldırıyı durdurdun. İki taraf da hasar almadın.<br>7.TUR: Goblin biraz geri çekildi ve arkasına baktı.<br>Ne yapacaksın?";
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					return;
+				}
+			}
+			if (tur == 7) {
+				//oyuncu hayatta ve ilk goblin hayatta degilse calisir, ikinci goblinle savasmak icin
+				if ((gcan == 0) && (can != 0)) {
+					document.getElementById("game").innerHTML = "Gelebilecek bir saldırıya karşı savunma yaptın ama yersiz. İkinci goblin seninle uğraşmaktan sıkıldı ve gitti. Kasaba geçici olarak goblin tehditinden kurtuldu. Bir sonraki gelişleri için kendini eğitmeye başladın.<br><hr><br>Oyun Bitti...";
+					tur = 30;
+					document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+					document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+					return;
+				}
+			}
+
+        }
+
+        //adrenalinin yukseldigi kısımda kacma secenegini kullanmak icin ve oyunu sifirlamak icin fonksiyon olusturuldu
+        function run() {
+			//5. turda oyuncu cani 0'dan farkli ise kacma senaryosu yazilir
+			if ((tur == 5) && (can != 0)) {
+				document.getElementById("game").innerHTML = "Kaçtın.. Arkana bile bakmadan...<br>Goblinler Hilari Hortus kasabasına saldırdı ve kasaba yok oldu. Geri kalan hayatın korku, acı ve pişmanlık icinde geçti. Kendine acemi savaşçı bile diyemezsin artık.<br><hr><br>Oyun bitti...";
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "<br>İkinci Goblinin Canı: " + gcan2 + "</p>";
+				document.getElementById("run").innerHTML = "Oyunu Sıfırla";
+				tur = 30;
+				return;
+			
+			}
+			
+			//Oyun bitiminde sifirlanma secenegi icin bu kısım aktif halde olur
+			if (tur >= 30) {
+				//tum degerler ve textler, buttonlar dahil, oyunun basindaki hale getirilir
+				document.getElementById("game").innerHTML = "1.TUR: Dikkat et! Önünde bir goblin belirdi. Goblinin elinde sopa var. Goblin sana doğru hızla atıldı. Ne yapacaksın?";
+				tur = 0;
+				can=5;
+				gcan=3;
+				gcan2=2;
+				document.getElementById("status").innerHTML = "<p>Canın: " + can + "<br>Goblinin Canı: " + gcan + "</p>";
+				document.getElementById("run").innerHTML = "";
+				document.getElementById("attack").innerHTML = "Saldırı";
+				document.getElementById("defense").innerHTML = "Savunma";
+				return;
+			}
+        }
+    </script>
+
+  </body>
+
+
+</html>
